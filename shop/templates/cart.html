@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  a{
+    color: black;
+  }
+  a:hover{
+    color: black;
+  }
+</style>
+
+<div class="container my-5">
+
+  <h2>Your Cart Summary</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for order_item in object.items.all %}
+
+
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>${{order_item.item.item_name}}</td>
+          <td>${{order_item.item.price}}</td>
+          <td>
+            <a href="{% url 'remove_single_from_cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></i></a>
+            {{order_item.quantity}}
+            <a href="{% url 'add_to_cart' order_item.item.slug %}"><i class="fas fa-plus mr-2"></i></i></a>
+          <td>
+            ${{order_item.get_total}}</td>
+        </tr>
+
+        {% endfor %}
+
+        <tr>
+          <td colspan="4"><b>Total Items</b></td>
+          <td><b> ${{object.get_items_total_price}}</b></td>
+        </tr>
+        <tr>
+          <td colspan="5"><a class="btn btn-warning float-right" href="{% url 'checkout' %}">Checkout</a></td>
+        </tr>
+        <tr>
+          <td colspan="5"><a class="btn btn-primary float-right" href="/">Continue Shopping</a></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+{% endblock %}
