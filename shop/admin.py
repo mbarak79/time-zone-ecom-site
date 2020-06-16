@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Item, OrderItem, Order, Address, UserProfile, PopularItem, ChoiceItem, Address
+from .models import Item, OrderItem, Order, Address, UserProfile, PopularItem, ChoiceItem, Address, ContactForm
 
 
 
@@ -25,3 +25,4 @@ admin.site.register(Order)
 admin.site.register(ChoiceItem)
 admin.site.register(PopularItem)
 admin.site.register(Address)
+admin.site.register(ContactForm)

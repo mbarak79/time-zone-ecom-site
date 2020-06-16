@@ -196,3 +196,13 @@ def userprofile_receiver(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(userprofile_receiver, sender=User)
+
+
+class ContactForm(models.Model):
+    message = models.TextField(max_length=1000)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name

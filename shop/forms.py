@@ -1,6 +1,9 @@
 from django import forms
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from django import forms
+
+
 
 
 PAYMENT_CHOICES = (
@@ -26,3 +29,10 @@ class CheckoutForm(forms.Form):
         widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
 
 
+class ContactForm(forms.Form):
+    from_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
+
+    class Meta:
+        fields = ['from_email', 'subject', 'message']

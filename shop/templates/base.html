@@ -59,7 +59,7 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="{% url 'index' %}">Home</a></li>
-                                    <li><a href="about.html">about</a></li>
+                                    <li><a href="{% url 'about' %}">about</a></li>
                                     <li class="hot"><a href="#">Latest</a>
                                     {% if user.is_authenticated %}
                                     <li><a href="#">Cart</a>
